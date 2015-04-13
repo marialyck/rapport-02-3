@@ -4,9 +4,12 @@ public class Activity {
 
 	public Activity(String title, int budgetTime) {
 		this.title = title;
-		this.budgetTime=budgetTime;
+		this.budgetTime=budgetTime; 
 	}
 	public String getTitle(){
 		return title;
+	}
+	public int getBudgetTime(){
+		return budgetTime;
 	}
 }
