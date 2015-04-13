@@ -9,6 +9,9 @@ public class Activity {
 	public String getTitle(){
 		return title;
 	}
+	
+	mere swag
+	
 	public int getBudgetTime(){
 		return budgetTime;
 	}
