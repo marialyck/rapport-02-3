@@ -10,11 +10,8 @@ public class Activity {
 		return title;
 	}
 	
-	mere swag
-	
 	public int getBudgetTime(){
 		return budgetTime;
 	}
-	
-	Swag
+
 }
