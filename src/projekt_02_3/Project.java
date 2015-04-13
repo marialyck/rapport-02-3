@@ -7,9 +7,8 @@ public class Project {
 	protected String init;
 	public Employee employee;
 	public ProjectManagementApp proApp;
-	private Activity activity;
 	private List<Activity> activities = new LinkedList<Activity>();
-	
+
 	public Project(String title) {
 		this.title = title;
 	}
@@ -21,6 +20,11 @@ public class Project {
 
 	public String getTitle() {
 		return title;
+	}
+
+	public void addActivity(Activity activity) {
+		// TODO Auto-generated method stub
+		activities.add(activity);
 	}
 
 }
