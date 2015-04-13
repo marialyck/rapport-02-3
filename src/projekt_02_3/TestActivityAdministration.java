@@ -14,7 +14,7 @@ public void testProjectName(){
 	
 	
 	try {
-		proApp.createActivity("");
+		proApp.createActivity("",0,null);
 		fail("OperaionNotAllowedException exception should have been thrown");
 	} catch (OperationNotAllowedException e) {
 		// Step 2) Throw error message
