@@ -6,6 +6,14 @@ import java.util.Scanner;
 public class Calendar {
 	GregorianCalendar calendar = new GregorianCalendar();
 	
+	public Calendar(Employee employee){
+		
+		
+		
+		
+	}
+
+	
 	
 
 }
