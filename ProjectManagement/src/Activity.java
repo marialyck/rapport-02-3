@@ -15,4 +15,6 @@ public class Activity {
 	public int getBudgetTime(){
 		return budgetTime;
 	}
+	
+	Swag
 }
