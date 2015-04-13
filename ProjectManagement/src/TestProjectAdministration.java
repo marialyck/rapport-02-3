@@ -10,7 +10,8 @@ public class TestProjectAdministration {
 @Test
 public void testProjectName() {
 	ProjectManagementApp proApp = new ProjectManagementApp();
-	Project project;
+	Employee emp = new Employee("CHAR");
+	Project pro1 = new Project("");
 	
 	//step 1) make a project 
 	// make sure that the project fails 
@@ -18,7 +19,7 @@ public void testProjectName() {
 	
 	
 	try {
-		proApp.createProject("");
+		proApp.createProject(emp,pro1);
 		fail("OperaionNotAllowedException exception should have been thrown");
 	} catch (OperationNotAllowedException e) {
 		// Step 2) Throw error message
