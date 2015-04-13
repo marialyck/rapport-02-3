@@ -1,8 +1,8 @@
 package projekt_02_3;
 
-public class User {
+public class Employee {
   
-  public String user();
+  public String employee();
   
   
 
