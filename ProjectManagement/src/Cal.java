@@ -19,7 +19,7 @@ public abstract class Cal{
 	String title;
 
 	static Scanner scan;
-	Calendar calendar = new GregorianCalendar();
+	protected Calendar calendar = new GregorianCalendar();
 	public void createActivity() {
 		
 		calendar.set(Calendar.YEAR, scan.nextInt()-1);
