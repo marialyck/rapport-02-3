@@ -19,16 +19,18 @@ public class TestActivityAdministration {
 
 		try {
 			employee.createActivity("a1", 2, pro1);
-			// Make sure that the activity creation fails. 
+			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
 			// Step 2)
 			// Check that the exception thrown has the correct error message and
 			// knows which operation failed.
 
-			assertEquals("You cannot create an activity if you're not a project leader",
+			assertEquals(
+					"You cannot create an activity if you're not a project leader",
 					e.getMessage());
-			assertEquals("please request assistance from a project leader", e.getOperation());
+			assertEquals("please request assistance from a project leader",
+					e.getOperation());
 		}
 	}
 
@@ -38,12 +40,11 @@ public class TestActivityAdministration {
 		Project pro1 = new Project("Hehj");
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject(emp, pro1);
+		assertEquals(emp, pro1.getProjectLeader()); // Sebastian
 
-		// step 1) make an activity - make sure it fails
-		assertEquals(emp, pro1.getProjectLeader());
-		
 		try {
-			
+
+			// step 1) make an activity - make sure it fails
 			emp.createActivity("", 0, pro1);
 			fail("OperaionNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -54,7 +55,7 @@ public class TestActivityAdministration {
 			assertEquals(
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
 					e.getMessage());
-			assertEquals("Please rename your activity", e.getOperation());
+			assertEquals("Please redo your activity", e.getOperation());
 		}
 	}
 

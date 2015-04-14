@@ -16,17 +16,17 @@ public class Employee {
 		return init;
 	}
 
-	public void assignProjectLeader(Employee emp) {
-		emp.isProjectLeader();
-	}
+//	public void assignProjectLeader(Employee emp) {
+//		emp.isProjectLeader();
+//	}
 
 	public void setProjectLeader(boolean projectLeader) {
 		this.projectLeader = projectLeader;
 	}
 
-	public boolean isProjectLeader() {
-		return projectLeader;
-	}
+//	public boolean isProjectLeader() {
+//		return projectLeader;
+//	}
 
 	public void createActivity(String title, int budgetTime, Project project) throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
@@ -39,7 +39,7 @@ public class Employee {
 		if (activity.getTitle().isEmpty() || activity.getBudgetTime() == 0) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
-					"Please rename your activity");
+					"Please redo your activity");
 		}
 		
 		addActivity(activity);
