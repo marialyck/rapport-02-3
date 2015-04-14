@@ -14,7 +14,7 @@ public class TestAddEmployee {
 		proApp.createProject("yolo");
 		assertFalse(pro1.isProjectLeader(emp2)); 
 		try {
-			emp2.addEmployeeToProject(pro1);
+			emp2.addEmployeeToProject(pro1, emp1);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -32,8 +32,29 @@ public class TestAddEmployee {
 
 	
 	@Test
-	public void testNonExistentEmployee() {
+	public void testNonExistentEmployee() throws OperationNotAllowedException {
+		Employee emp1 = new Employee("CHAR");
+		Employee emp2 = new Employee("FAIL");
+		Project pro1 = new Project("SwagForLife");
+		pro1.setProjectLeader(emp1);
+		//step 1) an employee tries to add a crew to a project but the employee is not a project leader
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		proApp.createProject("yolo");
+		try {
+			emp1.addEmployeeToProject(pro1, emp2);
+			// Make sure that the activity creation fails.
+			fail("OperationNotAllowedException exception should have been thrown");
+		} catch (OperationNotAllowedException e) {
+			// Step 2)
+			// Check that the exception thrown has the correct error message and
+			// knows which operation failed.
 
+			assertEquals(
+					"The requested employee is non-existent",
+					e.getMessage());
+			assertEquals("please request a valid employee",
+					e.getOperation());
+		}
 	}
 	
 }

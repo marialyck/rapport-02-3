@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 
 public class Employee {
 
@@ -44,15 +46,31 @@ public class Employee {
 		return activities;
 	}
 
-	public void addEmployeeToProject(Project project) throws OperationNotAllowedException {
+	public void addEmployeeToProject(Project project, Employee employee)
+			throws OperationNotAllowedException {
 		// TODO Auto-generated method stub
 		if (!project.isProjectLeader(this)) {
+			
+				throw new OperationNotAllowedException(
+						"You cannot add an employee to a project unless you're a project leader",
+						"please request assistance from a project leader");
+			}
+		if (!employee.search(employee.getInit())) {
 			throw new OperationNotAllowedException(
-					"You cannot add an employee to a project unless you're a project leader",
-					"please request assistance from a project leader");
+					"The requested employee is non-existent",
+					"please request a valid employee");
 		}
-		project.addEmployee(this);
+			project.addEmployee(employee);
 
+		
 	}
-
-}
+	public boolean search(String string) {
+		List<Employee> employees = new LinkedList<Employee>();
+		for (Employee employee : employees) {
+			if (employees.contains(string)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	}
