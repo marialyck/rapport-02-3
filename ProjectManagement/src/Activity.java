@@ -17,4 +17,13 @@ public class Activity extends Cal {
 	public int getBudgetTime(){
 		return budgetTime;
 	}
+	public String getStartDate(){
+		return startdate;
+		
+	}
+	public String getEndDate(){
+		return enddate;
+		
+	}
+	
 }
