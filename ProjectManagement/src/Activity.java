@@ -1,8 +1,10 @@
+import java.util.Date;
+
 public class Activity extends Cal {
 	protected String title;
 	protected int budgetTime;
 
-	public Activity(String title, int budgetTime, String startdate, String enddate) {
+	public Activity(String title, int budgetTime, Date startdate, Date enddate) {
 		
 		this.title = title;
 		this.budgetTime=budgetTime;
@@ -17,13 +19,16 @@ public class Activity extends Cal {
 	public int getBudgetTime(){
 		return budgetTime;
 	}
-	public String getStartDate(){
+	public Date getStartDate(){
 		return startdate;
 		
 	}
-	public String getEndDate(){
+	public Date getEndDate(){
 		return enddate;
 		
+	}
+	public static void main (String []args){
+		System.out.print("");
 	}
 	
 }
