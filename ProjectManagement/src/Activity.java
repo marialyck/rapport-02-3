@@ -3,13 +3,14 @@ import java.util.Date;
 public class Activity extends Cal {
 	protected String title;
 	protected int budgetTime;
+	protected Cal cal;
 
-	public Activity(String title, int budgetTime, Date startdate, Date enddate) {
+	public Activity(String title, int budgetTime, Cal cal) {
 		
 		this.title = title;
 		this.budgetTime=budgetTime;
-		this.startdate=startdate;
-		this.enddate=enddate;
+		this.cal=cal;
+		
 		
 	}
 	
@@ -19,16 +20,22 @@ public class Activity extends Cal {
 	public int getBudgetTime(){
 		return budgetTime;
 	}
+	
+	public void setStartDate(){
+		this.startdate=startdate;
+	}
+	
+	public void setEndDate() {
+		this.enddate=enddate;
+		
+	}
+	
 	public Date getStartDate(){
-		return startdate;
+		return cal.startdate;
 		
 	}
 	public Date getEndDate(){
-		return enddate;
+		return cal.enddate;
 		
 	}
-	public static void main (String []args){
-		System.out.print("");
-	}
-	
 }
