@@ -5,20 +5,21 @@ import org.junit.Test;
 public class TestActivityAdministration {
 	@Test
 	public void testCreateActivityFail() throws Exception {
-		Employee projectLeader = new Employee("CHAR");
-		Employee employee = new Employee("BARS");
+		Employee emp1 = new Employee("CHAR");
+		Employee emp2 = new Employee("BARS");
 		Project pro1 = new Project("SwagForLife");
+		pro1.setProjectLeader(emp1);
 		// check initial state.
 		// a) The project has no activities
 
 		ProjectManagementApp proApp = new ProjectManagementApp();
-		proApp.createProject(projectLeader, pro1);
+		proApp.createProject("yolo");
 		assertTrue(pro1.getActivities().isEmpty());
 		// step 1) make sure the employee is not a project leader
-		assertFalse(pro1.isProjectLeader(employee));
+		assertFalse(pro1.isProjectLeader(emp2));
 
 		try {
-			employee.createActivity("a1", 2, pro1);
+			emp2.createActivity("a1", 2, pro1);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -39,9 +40,9 @@ public class TestActivityAdministration {
 		Employee emp = new Employee("CHAR");
 		Project pro1 = new Project("Hehj");
 		ProjectManagementApp proApp = new ProjectManagementApp();
-		proApp.createProject(emp, pro1);
-		assertEquals(emp, pro1.getProjectLeader()); // Sebastian
-
+		proApp.createProject("yolo");
+		pro1.setProjectLeader(emp);
+		assertEquals(emp, pro1.getProjectLeader());
 		try {
 
 			// step 1) make an activity - make sure it fails
