@@ -13,6 +13,8 @@ public class Cal{
 	public int day = 0;
 	public int hour = 0;
 	public int minute = 0;
+	public String startdate;
+	public String enddate;
 	
 	String title;
 
