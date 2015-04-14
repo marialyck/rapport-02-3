@@ -17,17 +17,6 @@ public class Cal{
 	String title;
 
 	static Scanner scan;
-
-	 
-	public Cal (String title, int year, int month, int day, int hour,
-			int minute) {
-		this.title=title;
-		this.year=Calendar.YEAR;
-		this.month=Calendar.MONTH;
-		this.day=Calendar.DAY_OF_MONTH;
-		this.hour=Calendar.HOUR_OF_DAY;
-		this.minute=Calendar.MINUTE;
-	}
 	Calendar calendar = new GregorianCalendar();
 	public void createActivity() {
 		
