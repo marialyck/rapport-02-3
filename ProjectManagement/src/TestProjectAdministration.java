@@ -17,7 +17,7 @@ public void testProjectName() {
 	// make sure that the project fails 
 	
 	try {
-		proApp.createProject(emp,pro1);
+		proApp.createProject("");
 		fail("OperaionNotAllowedException exception should have been thrown");
 	} catch (OperationNotAllowedException e) {
 		// Step 2) Throw error message

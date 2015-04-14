@@ -4,7 +4,6 @@ import java.util.List;
 public class Employee {
 
 	protected String init;
-	private boolean projectLeader = false;
 	private List<Activity> activities = new LinkedList<Activity>();
 
 	public Employee(String init) {
@@ -13,10 +12,6 @@ public class Employee {
 
 	public String getInit() {
 		return init;
-	}
-
-	public void setProjectLeader(boolean projectLeader) {
-		this.projectLeader = projectLeader;
 	}
 
 
