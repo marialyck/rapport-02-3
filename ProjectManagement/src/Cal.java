@@ -13,8 +13,8 @@ public abstract class Cal{
 	public int day = 0;
 	public int hour = 0;
 	public int minute = 0;
-	public String startdate;
-	public String enddate;
+	public Date startdate;
+	public Date enddate;
 	
 	String title;
 
@@ -22,7 +22,7 @@ public abstract class Cal{
 	Calendar calendar = new GregorianCalendar();
 	public void createActivity() {
 		
-		calendar.set(Calendar.YEAR, scan.nextInt());
+		calendar.set(Calendar.YEAR, scan.nextInt()-1);
 		calendar.set(Calendar.MONTH, scan.nextInt());
 		calendar.set(Calendar.DAY_OF_MONTH, scan.nextInt());
 		calendar.set(Calendar.HOUR_OF_DAY, scan.nextInt());
