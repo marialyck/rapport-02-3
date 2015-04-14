@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import projekt_02_3.Activity;
 
-public class Cal{
+public abstract class Cal{
 
 	public int year = 1;
 	public int month = 0;
