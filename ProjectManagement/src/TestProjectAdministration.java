@@ -16,8 +16,6 @@ public void testProjectName() {
 	//step 1) make a project 
 	// make sure that the project fails 
 	
-	
-	
 	try {
 		proApp.createProject(emp,pro1);
 		fail("OperaionNotAllowedException exception should have been thrown");

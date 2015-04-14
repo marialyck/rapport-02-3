@@ -4,7 +4,6 @@ import java.util.List;
 public class Employee {
 
 	protected String init;
-	private Employee emp;
 	private boolean projectLeader = false;
 	private List<Activity> activities = new LinkedList<Activity>();
 
@@ -16,17 +15,10 @@ public class Employee {
 		return init;
 	}
 
-//	public void assignProjectLeader(Employee emp) {
-//		emp.isProjectLeader();
-//	}
-
 	public void setProjectLeader(boolean projectLeader) {
 		this.projectLeader = projectLeader;
 	}
 
-//	public boolean isProjectLeader() {
-//		return projectLeader;
-//	}
 
 	public void createActivity(String title, int budgetTime, Project project) throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
