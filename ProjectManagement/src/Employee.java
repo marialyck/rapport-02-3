@@ -5,6 +5,7 @@ public class Employee {
 
 	protected String init;
 	private List<Activity> activities = new LinkedList<Activity>();
+	protected Cal cal;
 
 	public Employee(String init) {
 		this.init = init;
@@ -22,7 +23,7 @@ public class Employee {
 					"please request assistance from a project leader");
 		}
 
-		Activity activity = new Activity(title, budgetTime);
+		Activity activity = new Activity(title, budgetTime, cal);
 		if (activity.getTitle().isEmpty() || activity.getBudgetTime() == 0) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
