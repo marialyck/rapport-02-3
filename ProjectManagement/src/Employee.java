@@ -14,11 +14,11 @@ public class Employee {
 		return init;
 	}
 
-
-	public void createActivity(String title, int budgetTime, Project project) throws OperationNotAllowedException {
+	public void createActivity(String title, int budgetTime, Project project)
+			throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
 			throw new OperationNotAllowedException(
-					"You cannot create an activity if you're not a project leader", 
+					"You cannot create an activity if you're not a project leader",
 					"please request assistance from a project leader");
 		}
 
@@ -28,10 +28,10 @@ public class Employee {
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
 					"Please redo your activity");
 		}
-		
+
 		addActivity(activity);
 		project.addActivity(activity);
-		
+
 	}
 
 	public void addActivity(Activity activity) {
@@ -41,6 +41,17 @@ public class Employee {
 
 	public List<Activity> getActivities() {
 		return activities;
+	}
+
+	public void addEmployeeToProject(Project project) throws OperationNotAllowedException {
+		// TODO Auto-generated method stub
+		if (!project.isProjectLeader(this)) {
+			throw new OperationNotAllowedException(
+					"You cannot add an employee to a project unless you're a project leader",
+					"please request assistance from a project leader");
+		}
+		project.addEmployee(this);
+
 	}
 
 }
