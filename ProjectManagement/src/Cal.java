@@ -1,12 +1,9 @@
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Scanner;
 
-import projekt_02_3.Activity;
-
-public abstract class Cal{
+public class Cal {
 
 	public int year = 1;
 	public int month = 0;
@@ -15,29 +12,54 @@ public abstract class Cal{
 	public int minute = 0;
 	public Date startdate;
 	public Date enddate;
-	
+
 	String title;
 
-	static Scanner scan;
+	Scanner scan;
 	protected Calendar calendar = new GregorianCalendar();
-	public void createActivity() {
-		
-		calendar.set(Calendar.YEAR, scan.nextInt()-1);
-		calendar.set(Calendar.MONTH, scan.nextInt());
-		calendar.set(Calendar.DAY_OF_MONTH, scan.nextInt());
-		calendar.set(Calendar.HOUR_OF_DAY, scan.nextInt());
-		calendar.set(Calendar.MINUTE, scan.nextInt());
-		Date startdate = calendar.getTime();
-		
-		calendar.add(Calendar.YEAR, scan.nextInt());
-		calendar.add(Calendar.MONTH, scan.nextInt());
-		calendar.add(Calendar.DAY_OF_MONTH, scan.nextInt());
-		calendar.add(Calendar.HOUR_OF_DAY, scan.nextInt());
-		calendar.add(Calendar.MINUTE, scan.nextInt());
-		Date enddate = calendar.getTime();
 	
-		
+	public void openScanner(){
+			scan = new Scanner(System.in);
 	}
+	
+
+	public void createActivity(Date startdate, Date enddate, String title) {	
+		
+		System.out.println("Hi SweetiePie, Please enter a name for the activity");
+		title = scan.next();
+		
+		System.out.println("Please enter a start year.....");
+		calendar.set(Calendar.YEAR, scan.nextInt() - 1);
+		
+		System.out.println("Please enter a week");
+		calendar.set(Calendar.WEEK_OF_YEAR, scan.nextInt());
+		startdate = calendar.getTime();
+		
+		
+		System.out.println("So..emmm... how many weeks <3");
+		calendar.set(Calendar.WEEK_OF_YEAR, scan.nextInt());
+		enddate = calendar.getTime();
+		
+
 
 	}
-	
+
+	public void setStartDate(Date startdate) {
+		this.startdate = startdate;
+	}
+
+	public void setEndDate(Date enddate) {
+		this.enddate = enddate;
+
+	}
+
+	public Date getStartDate() {
+		return startdate;
+
+	}
+
+	public Date getEndDate() {
+		return enddate;
+
+	}
+}

@@ -16,7 +16,7 @@ public class Employee {
 		return init;
 	}
 
-	public void createActivity(String title, int budgetTime, Project project)
+	public void createActivity(String title, int budgetTime, Project project, Cal cal)
 			throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
 			throw new OperationNotAllowedException(
@@ -24,7 +24,7 @@ public class Employee {
 					"please request assistance from a project leader");
 		}
 
-		Activity activity = new Activity(title, budgetTime);
+		Activity activity = new Activity(title, budgetTime, cal);
 		if (activity.getTitle().isEmpty() || activity.getBudgetTime() == 0) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
@@ -38,7 +38,7 @@ public class Employee {
 
 	
 
-	public void addEmployeeToActivity(Project project, Activity activity, Employee employee)
+	public void addEmployeeToActivity(Project project, Activity activity, Employee employee, Cal cal)
 			throws OperationNotAllowedException {
 		// TODO Auto-generated method stub
 		if (!project.isProjectLeader(this)) {

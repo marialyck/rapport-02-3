@@ -1,14 +1,17 @@
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Date;
 
-public class Activity {
-	protected String title;
+public class Activity extends Cal {
 	protected int budgetTime;
-	private List<Employee> employees = new LinkedList<Employee>();
+	protected Cal cal;
+	protected List<Employee> employees = new LinkedList<Employee>();
 
-	public Activity(String title, int budgetTime) {
+	public Activity(String title, int budgetTime, Cal cal) {
+		
 		this.title = title;
 		this.budgetTime = budgetTime;
+		this.cal = cal;	
 	}
 
 	public String getTitle() {

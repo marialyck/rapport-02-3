@@ -8,7 +8,8 @@ public class TestAddEmployee {
 		Employee emp1 = new Employee("CHAR");
 		Employee emp2 = new Employee("BARS");
 		Project pro1 = new Project("SwagForLife");
-		Activity act1 = new Activity("yolo1", 420);
+		Cal cal = new Cal();
+		Activity act1 = new Activity("yolo1", 420, cal);
 		pro1.setProjectLeader(emp1);
 		// step 1) an employee tries to add a crew to a project but the employee
 		// is not a project leader
@@ -16,7 +17,7 @@ public class TestAddEmployee {
 		proApp.createProject("yolo");
 		assertFalse(pro1.isProjectLeader(emp2));
 		try {
-			emp2.addEmployeeToActivity(pro1, act1, emp1);
+			emp2.addEmployeeToActivity(pro1, act1, emp1, cal);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -37,14 +38,15 @@ public class TestAddEmployee {
 		Employee emp1 = new Employee("CHAR");
 		Employee emp2 = new Employee("FAIL");
 		Project pro1 = new Project("SwagForLife");
-		Activity act1 = new Activity("yolo1", 420);
+		Cal cal = new Cal();
+		Activity act1 = new Activity("yolo1", 420, cal);
 		pro1.setProjectLeader(emp1);
 		// step 1) an employee tries to add a crew to a project but the employee
 		// is not a project leader
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject("yolo");
 		try {
-			emp1.addEmployeeToActivity(pro1, act1, emp2);
+			emp1.addEmployeeToActivity(pro1, act1, emp2, cal);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
