@@ -1,4 +1,4 @@
-package projekt_02_3;
+package project023;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -23,31 +23,35 @@ public abstract class Cal {
 	public static void openScanner(){
 			scan = new Scanner(System.in);
 	}
+	
 
-	public static void createActivity(Date startdate, Date enddate) {	
-
+	public static void createActivity(Date startdate, Date enddate, String title) {	
+		
+		System.out.println("Hi SweetiePie, Please enter a name for the activity");
+		title = scan.next();
+		
+		System.out.println("Please enter a start year.....");
 		calendar.set(Calendar.YEAR, scan.nextInt() - 1);
-		calendar.set(Calendar.MONTH, scan.nextInt());
-		calendar.set(Calendar.DAY_OF_MONTH, scan.nextInt());
-		calendar.set(Calendar.HOUR_OF_DAY, scan.nextInt());
-		calendar.set(Calendar.MINUTE, scan.nextInt());
+		
+		System.out.println("Please enter a week");
+		calendar.set(Calendar.WEEK_OF_YEAR, scan.nextInt());
 		startdate = calendar.getTime();
-
-		calendar.add(Calendar.YEAR, scan.nextInt());
-		calendar.add(Calendar.MONTH, scan.nextInt());
-		calendar.add(Calendar.DAY_OF_MONTH, scan.nextInt());
-		calendar.add(Calendar.HOUR_OF_DAY, scan.nextInt());
-		calendar.add(Calendar.MINUTE, scan.nextInt());
+		
+		
+		System.out.println("So..emmm... how many weeks <3");
+		calendar.set(Calendar.WEEK_OF_YEAR, scan.nextInt());
 		enddate = calendar.getTime();
+		
+
 
 	}
 
 	public void setStartDate(Date startdate) {
-		this.startdate = startdate;
+		Cal.startdate = startdate;
 	}
 
 	public void setEndDate(Date enddate) {
-		this.enddate = enddate;
+		Cal.enddate = enddate;
 
 	}
 
