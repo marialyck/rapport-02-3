@@ -12,8 +12,8 @@ public class Cal {
 	public int day;
 	public int hour;
 	public int minute;
-	Date startdate;
-	Date enddate;
+	public Date startdate;
+	public Date enddate;
 
 	static Scanner scan;
 
