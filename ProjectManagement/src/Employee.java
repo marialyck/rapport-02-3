@@ -31,21 +31,14 @@ public class Employee {
 					"Please redo your activity");
 		}
 
-		addActivity(activity);
+
 		project.addActivity(activity);
 
 	}
 
-	public void addActivity(Activity activity) {
-		// TODO Auto-generated method stub
-		activities.add(activity);
-	}
+	
 
-	public List<Activity> getActivities() {
-		return activities;
-	}
-
-	public void addEmployeeToProject(Project project, Employee employee)
+	public void addEmployeeToActivity(Project project, Activity activity, Employee employee)
 			throws OperationNotAllowedException {
 		// TODO Auto-generated method stub
 		if (!project.isProjectLeader(this)) {
@@ -53,13 +46,13 @@ public class Employee {
 				throw new OperationNotAllowedException(
 						"You cannot add an employee to a project unless you're a project leader",
 						"please request assistance from a project leader");
-			}
+		}
 		if (!employee.search(employee.getInit())) {
 			throw new OperationNotAllowedException(
 					"The requested employee is non-existent",
 					"please request a valid employee");
 		}
-			project.addEmployee(employee);
+		activity.addEmployee(employee);
 
 		
 	}
@@ -71,5 +64,10 @@ public class Employee {
 			}
 		}
 		return false;
+	}
+	public void registerWorkHours(Activity activity, Employee employee, int workhours){
+//		System.out.println("The" + employee + "has worked on the activity" + activity.getTitle() + 
+//				"for" + workhours + "hours");
+		
 	}
 	}

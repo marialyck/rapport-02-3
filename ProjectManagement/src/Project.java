@@ -8,7 +8,7 @@ public class Project {
 	public ProjectManagementApp proApp;
 	private Employee projectLeader;
 	private List<Activity> activities = new LinkedList<Activity>();
-	private List<Employee> employees = new LinkedList<Employee>();
+	
 
 	public Project(String title) {
 		this.title = title;
@@ -31,18 +31,14 @@ public class Project {
 		// TODO Auto-generated method stub
 		activities.add(activity);
 	}
-	public void addEmployee(Employee employee){
-		employees.add(employee);
-	}
+
 
 
 	public List<Activity> getActivities() {
 		// TODO Auto-generated method stub
 		return activities;
 	}
-	public List<Employee> getEmployees(){
-		return employees;
-	}
+	
 
 
 	public boolean isProjectLeader(Employee employee) {

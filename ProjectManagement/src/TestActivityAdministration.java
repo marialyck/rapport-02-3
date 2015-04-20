@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 
 public class TestActivityAdministration {
@@ -43,6 +45,7 @@ public class TestActivityAdministration {
 		proApp.createProject("yolo");
 		pro1.setProjectLeader(emp);
 		assertEquals(emp, pro1.getProjectLeader());
+
 		try {
 
 			// step 1) make an activity - make sure it fails
@@ -60,4 +63,40 @@ public class TestActivityAdministration {
 		}
 	}
 
+	@Test
+	public void testAddActivity() throws Exception {
+		Employee emp1 = new Employee("CHAR");
+		
+		Project pro1 = new Project("SwagForLife");
+		List<Activity> activities = pro1.getActivities();
+		assertTrue(activities.isEmpty());
+		pro1.setProjectLeader(emp1);
+		assertEquals(emp1, pro1.getProjectLeader());
+		
+		String title = "Smoke w33d err'day";
+		int budgetTime = 10;
+		emp1.createActivity(title, budgetTime, pro1);
+		
+		assertEquals(1, activities.size());
+
+	}
+	//@Test
+//	public void testAddEmployeeToActivity() throws Exception {
+//		Employee emp1 = new Employee("CHAR");
+//		Employee emp2 = new Employee("Sn00p d0gz");
+//		
+//		Activity activity = new Activity("Swagtivity", 10);
+//		Project pro1 = new Project("SwagForLife");
+//		List<Employee> employees = activity.getEmployees();
+//		assertTrue(employees.isEmpty());
+//		pro1.setProjectLeader(emp1);
+//		assertEquals(emp1, pro1.getProjectLeader());
+//		
+//		String title = "Smoke w33d err'day";
+//		int budgetTime = 10;
+//		emp1.addEmployeeToActivity(pro1, activity, emp2);
+//		
+//		assertEquals(1, employees.size());
+//
+//	}
 }

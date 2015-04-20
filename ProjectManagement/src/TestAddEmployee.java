@@ -4,17 +4,19 @@ import org.junit.Test;
 
 public class TestAddEmployee {
 	@Test
-	public void NotProjectLeader() throws Exception{
+	public void NotProjectLeader() throws Exception {
 		Employee emp1 = new Employee("CHAR");
 		Employee emp2 = new Employee("BARS");
 		Project pro1 = new Project("SwagForLife");
+		Activity act1 = new Activity("yolo1", 420);
 		pro1.setProjectLeader(emp1);
-		//step 1) an employee tries to add a crew to a project but the employee is not a project leader
+		// step 1) an employee tries to add a crew to a project but the employee
+		// is not a project leader
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject("yolo");
-		assertFalse(pro1.isProjectLeader(emp2)); 
+		assertFalse(pro1.isProjectLeader(emp2));
 		try {
-			emp2.addEmployeeToProject(pro1, emp1);
+			emp2.addEmployeeToActivity(pro1, act1, emp1);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -30,18 +32,19 @@ public class TestAddEmployee {
 		}
 	}
 
-	
 	@Test
 	public void testNonExistentEmployee() throws OperationNotAllowedException {
 		Employee emp1 = new Employee("CHAR");
 		Employee emp2 = new Employee("FAIL");
 		Project pro1 = new Project("SwagForLife");
+		Activity act1 = new Activity("yolo1", 420);
 		pro1.setProjectLeader(emp1);
-		//step 1) an employee tries to add a crew to a project but the employee is not a project leader
+		// step 1) an employee tries to add a crew to a project but the employee
+		// is not a project leader
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject("yolo");
 		try {
-			emp1.addEmployeeToProject(pro1, emp2);
+			emp1.addEmployeeToActivity(pro1, act1, emp2);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -49,12 +52,10 @@ public class TestAddEmployee {
 			// Check that the exception thrown has the correct error message and
 			// knows which operation failed.
 
-			assertEquals(
-					"The requested employee is non-existent",
+			assertEquals("The requested employee is non-existent",
 					e.getMessage());
-			assertEquals("please request a valid employee",
-					e.getOperation());
+			assertEquals("please request a valid employee", e.getOperation());
 		}
 	}
-	
+
 }
