@@ -12,17 +12,21 @@ public abstract class Cal {
 	public int day = 0;
 	public int hour = 0;
 	public int minute = 0;
-	public Date startdate;
-	public Date enddate;
+	public static Date startdate;
+	public static Date enddate;
 
 	String title;
 
 	static Scanner scan;
-	protected Calendar calendar = new GregorianCalendar();
+	protected static Calendar calendar = new GregorianCalendar();
+	
+	public static void openScanner(){
+			scan = new Scanner(System.in);
+	}
 
-	public void createActivity() {
+	public static void createActivity(Date startdate, Date enddate) {	
 
-		calendar.set(Calendar.YEAR, scan.nextInt()-1);
+		calendar.set(Calendar.YEAR, scan.nextInt() - 1);
 		calendar.set(Calendar.MONTH, scan.nextInt());
 		calendar.set(Calendar.DAY_OF_MONTH, scan.nextInt());
 		calendar.set(Calendar.HOUR_OF_DAY, scan.nextInt());
@@ -37,22 +41,23 @@ public abstract class Cal {
 		enddate = calendar.getTime();
 
 	}
-	public void setStartDate(Date startdate){
-		this.startdate=startdate;
-	}
-	
-	public void setEndDate(Date enddate) {
-		this.enddate=enddate;
-		
-	}
-	
-	public Date getStartDate(){
-		return startdate;
-		
-	}
-	public Date getEndDate(){
-		return enddate;
-		
+
+	public void setStartDate(Date startdate) {
+		this.startdate = startdate;
 	}
 
+	public void setEndDate(Date enddate) {
+		this.enddate = enddate;
+
+	}
+
+	public Date getStartDate() {
+		return startdate;
+
+	}
+
+	public Date getEndDate() {
+		return enddate;
+
+	}
 }
