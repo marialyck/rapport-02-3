@@ -1,9 +1,8 @@
-package projekt_02_3;
+package project023;
 
 import java.util.Date;
 
 public class Activity extends Cal {
-	protected String title;
 	protected int budgetTime;
 	protected Cal cal;
 
@@ -22,20 +21,20 @@ public class Activity extends Cal {
 	}
 	
 	public void setStartDate(Date startdate){
-		this.startdate=startdate;
+		Cal.startdate=startdate;
 	}
 	
 	public void setEndDate(Date enddate) {
-		this.enddate=enddate;
+		Cal.enddate=enddate;
 		
 	}
 	
 	public Date getStartDate(){
-		return cal.startdate;
+		return Cal.startdate;
 		
 	}
 	public Date getEndDate(){
-		return cal.enddate;
+		return Cal.enddate;
 		
 	}
 }
