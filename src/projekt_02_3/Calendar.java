@@ -27,14 +27,14 @@ public abstract class Cal {
 		calendar.set(Calendar.DAY_OF_MONTH, scan.nextInt());
 		calendar.set(Calendar.HOUR_OF_DAY, scan.nextInt());
 		calendar.set(Calendar.MINUTE, scan.nextInt());
-		Date startdate = calendar.getTime();
+		startdate = calendar.getTime();
 
 		calendar.add(Calendar.YEAR, scan.nextInt());
 		calendar.add(Calendar.MONTH, scan.nextInt());
 		calendar.add(Calendar.DAY_OF_MONTH, scan.nextInt());
 		calendar.add(Calendar.HOUR_OF_DAY, scan.nextInt());
 		calendar.add(Calendar.MINUTE, scan.nextInt());
-		Date enddate = calendar.getTime();
+		enddate = calendar.getTime();
 
 	}
 	public void setStartDate(Date startdate){
