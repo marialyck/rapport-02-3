@@ -14,7 +14,7 @@ public class TestProjectAdministration {
 @Test
 public void testProjectName() throws Exception {
 	ProjectManagementApp proApp = new ProjectManagementApp();
-	Employee emp = new Employee("CHAR");
+	Employee emp = new Employee("CHAR", proApp);
 	Project pro1 = new Project("");
 	assertTrue(pro1.getTitle().isEmpty());
 	
