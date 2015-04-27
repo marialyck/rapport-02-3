@@ -10,10 +10,11 @@ public class ProjectManagementApp {
 		projects.add(project);
 	}
 
-	public void createProject(String title) throws OperationNotAllowedException {
+public void createProject(String title) throws OperationNotAllowedException {
 		Project project = new Project(title);
 
 		if (project.getTitle().isEmpty()) {
+			project.createTitle();
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your project",
 					"Please rename your project");
