@@ -8,15 +8,15 @@ import org.junit.Test;
 public class TestActivityAdministration {
 	@Test
 	public void testCreateActivityFail() throws Exception {
-		Employee emp1 = new Employee("CHAR");
-		Employee emp2 = new Employee("BARS");
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		Employee emp1 = new Employee("CHAR", proApp);
+		Employee emp2 = new Employee("BARS", proApp);
 		Project pro1 = new Project("SwagForLife");
 		Cal cal = new Cal();
 		pro1.setProjectLeader(emp1);
 		// check initial state.
 		// a) The project has no activities
 
-		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject("yolo");
 		assertTrue(pro1.getActivities().isEmpty());
 		// step 1) make sure the employee is not a project leader
@@ -41,10 +41,10 @@ public class TestActivityAdministration {
 
 	@Test
 	public void testCreateActivity() throws Exception {
-		Employee emp = new Employee("CHAR");
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		Employee emp = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
 		Project pro1 = new Project("Hehj");
-		ProjectManagementApp proApp = new ProjectManagementApp();
 		proApp.createProject("yolo");
 		pro1.setProjectLeader(emp);
 		assertEquals(emp, pro1.getProjectLeader());
@@ -68,7 +68,8 @@ public class TestActivityAdministration {
 
 	@Test
 	public void testAddActivity() throws Exception {
-		Employee emp1 = new Employee("CHAR");
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		Employee emp1 = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
 
 		Project pro1 = new Project("SwagForLife");
@@ -84,25 +85,26 @@ public class TestActivityAdministration {
 		assertEquals(1, activities.size());
 
 	}
-//
-//	@Test
-//	public void testAddEmployeeToActivity() throws Exception {
-//		Employee emp1 = new Employee("CHAR");
-//		Employee emp2 = new Employee("Sn00p d0gz");
-//
-//		Cal cal = new Cal();
-//		Activity activity = new Activity("Swagtivity", 10, cal);
-//		Project pro1 = new Project("SwagForLife");
-//		List<Employee> employees = activity.getEmployees();
-//		assertTrue(employees.isEmpty());
-//		pro1.setProjectLeader(emp1);
-//		assertEquals(emp1, pro1.getProjectLeader());
-//
-//		String title = "Smoke w33d err'day";
-//		int budgetTime = 10;
-//		emp1.addEmployeeToActivity(pro1, activity, emp2, cal);
-//
-//		assertEquals(1, employees.size());
-//
-//	}
+
+	@Test
+	public void testAddEmployeeToActivity() throws Exception {
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		Employee emp1 = new Employee("CHAR", proApp);
+		Employee emp2 = new Employee("Sn00p d0gz", proApp);
+		proApp.addEmployee(emp1);
+		proApp.addEmployee(emp2);
+		Cal cal = new Cal();
+		Project pro1 = new Project("SwagForLife");
+		pro1.setProjectLeader(emp1);
+		assertEquals(emp1, pro1.getProjectLeader());
+		
+		
+		Activity act1 = new Activity("masdml", 10, cal);
+		List<Employee> employees = act1.getEmployees();
+		assertTrue(employees.isEmpty());
+		emp1.addEmployeeToActivity(pro1, act1, emp2, cal);
+		assertFalse(employees.isEmpty());
+		assertEquals(1, employees.size());
+
+	}
 }
