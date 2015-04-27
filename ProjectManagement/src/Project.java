@@ -1,13 +1,16 @@
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Project {
-
+	
+	protected String projectname;
 	protected String title;
 	protected String init;
 	public ProjectManagementApp proApp;
 	private Employee projectLeader;
 	private List<Activity> activities = new LinkedList<Activity>();
+	int numberOfProjects=0;
 	
 
 	public Project(String title) {
@@ -20,6 +23,13 @@ public class Project {
 		return title;
 	}
 
+	public void createTitle(){
+	for(int i=0;i<proApp.getProjects().size();i++){
+		numberOfProjects=numberOfProjects+1;
+	}	
+			title.equals(Calendar.YEAR+""+numberOfProjects+1);
+		}
+	
 
 
 	public void setProjectLeader(Employee projectLeader) {
