@@ -3,13 +3,12 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-
 public class Employee {
 
 	protected String init;
 	private List<Activity> activities = new LinkedList<Activity>();
 	private ProjectManagementApp proApp;
-	HashMap<Activity,Integer> map = new HashMap<Activity,Integer>();
+	HashMap<Activity, Integer> map = new HashMap<Activity, Integer>();
 
 	public Employee(String init, ProjectManagementApp proApp) {
 		this.init = init;
@@ -20,8 +19,8 @@ public class Employee {
 		return init;
 	}
 
-	public void createActivity(String title, int budgetTime, Project project, Cal cal)
-			throws OperationNotAllowedException {
+	public void createActivity(String title, int budgetTime, Project project,
+			Cal cal) throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
 			throw new OperationNotAllowedException(
 					"You cannot create an activity if you're not a project leader",
@@ -35,21 +34,18 @@ public class Employee {
 					"Please redo your activity");
 		}
 
-
 		project.addActivity(activity);
 
 	}
 
-	
-
-	public void addEmployeeToActivity(Project project, Activity activity, Employee employee, Cal cal)
-			throws OperationNotAllowedException {
+	public void addEmployeeToActivity(Project project, Activity activity,
+			Employee employee, Cal cal) throws OperationNotAllowedException {
 		// TODO Auto-generated method stub
 		if (!project.isProjectLeader(this)) {
-			
-				throw new OperationNotAllowedException(
-						"You cannot add an employee to a project unless you're a project leader",
-						"please request assistance from a project leader");
+
+			throw new OperationNotAllowedException(
+					"You cannot add an employee to a project unless you're a project leader",
+					"please request assistance from a project leader");
 		}
 		if (!proApp.search(employee.getInit())) {
 			throw new OperationNotAllowedException(
@@ -58,20 +54,49 @@ public class Employee {
 		}
 		activity.addEmployee(employee);
 
-		
 	}
 
-	public void registerWorkHours(Activity activity, int workHours) throws OperationNotAllowedException{
-		if(workHours<0){
+	public void registerWorkHours(Activity activity, int workHours)
+			throws OperationNotAllowedException {
+		if (workHours < 0) {
 			throw new OperationNotAllowedException(
 					"Cannot register a negative amount of hours",
 					"Please try to register your work hours again");
 		}
-		map.put(activity,workHours);
+		map.put(activity, workHours);
 	}
 
 	public int getWorkHours(Activity activity) {
 		// TODO Auto-generated method stub
 		return map.get(activity);
 	}
+
+	public void followUp(Employee employee, Project project, Activity activity)
+			throws OperationNotAllowedException {
+		if (!project.isProjectLeader(this)) {
+
+			throw new OperationNotAllowedException(
+					"you cannot follow-up on employees unless you're a project leader",
+					"please request assistance from a project leader");
+
+		}
+		System.out.print("Employee: " + employee
+				+ " has been working on project " + project.getTitle()
+				+ " on the following activity " + activity
+				+ " for the following hours: "
+				+ employee.getWorkHours(activity));
 	}
+
+	public void getReport(Project project, Activity activity)
+			throws OperationNotAllowedException {
+		if (!project.isProjectLeader(this)) {
+
+			throw new OperationNotAllowedException(
+					"you cannot get a report unless you're a project leader",
+					"please request assistance from a project leader"); 
+
+		}
+		System.out.println("report on project: " + project.getTitle() + ", "
+				+ project.getActivities() + ", " + activity.getEmployees());
+	}
+}
