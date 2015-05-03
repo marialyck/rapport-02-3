@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,16 +8,19 @@ public class Employee {
 
 	protected String init;
 	private List<Activity> activities = new LinkedList<Activity>();
+	private ProjectManagementApp proApp;
+	HashMap<Activity,Integer> map = new HashMap<Activity,Integer>();
 
-	public Employee(String init) {
+	public Employee(String init, ProjectManagementApp proApp) {
 		this.init = init;
+		this.proApp = proApp;
 	}
 
 	public String getInit() {
 		return init;
 	}
 
-	public void createActivity(String title, int budgetTime, Date startdate, Date enddate, Project project, Cal cal)
+	public void createActivity(String title, int budgetTime, Project project, Cal cal)
 			throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
 			throw new OperationNotAllowedException(
@@ -47,7 +51,7 @@ public class Employee {
 						"You cannot add an employee to a project unless you're a project leader",
 						"please request assistance from a project leader");
 		}
-		if (!employee.search(employee.getInit())) {
+		if (!proApp.search(employee.getInit())) {
 			throw new OperationNotAllowedException(
 					"The requested employee is non-existent",
 					"please request a valid employee");
@@ -56,18 +60,18 @@ public class Employee {
 
 		
 	}
-	public boolean search(String string) {
-		List<Employee> employees = new LinkedList<Employee>();
-		for (Employee employee : employees) {
-			if (employees.contains(string)) {
-				return true;
-			}
+
+	public void registerWorkHours(Activity activity, int workHours) throws OperationNotAllowedException{
+		if(workHours<0){
+			throw new OperationNotAllowedException(
+					"Cannot register a negative amount of hours",
+					"Please try to register your work hours again");
 		}
-		return false;
+		map.put(activity,workHours);
 	}
-	public void registerWorkHours(Activity activity, Employee employee, int workhours){
-//		System.out.println("The" + employee + "has worked on the activity" + activity.getTitle() + 
-//				"for" + workhours + "hours");
-		
+
+	public int getWorkHours(Activity activity) {
+		// TODO Auto-generated method stub
+		return map.get(activity);
 	}
 	}
