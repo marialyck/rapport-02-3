@@ -10,15 +10,15 @@ public class ProjectManagementApp {
 		projects.add(project);
 	}
 
-public void createProject(String title) throws OperationNotAllowedException {
+public void createProject(String title) throws OperationNotRecommended {
 		Project project = new Project(title);
 
 		if (project.getTitle().isEmpty()) {
-			project.createTitle();
-			throw new OperationNotAllowedException(
-					"Error: You must enter a valid name for your project",
-					"Please rename your project");
+			throw new OperationNotRecommended(
+					"Warning, you are creating a project without a discription",
+					"Please enter a project name");
 		}
+		project.createTitle();
 		//
 		// project.setProjectLeader(projectLeader);
 		addProject(project);
