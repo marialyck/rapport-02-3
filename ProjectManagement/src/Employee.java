@@ -37,6 +37,19 @@ public class Employee {
 		project.addActivity(activity);
 
 	}
+		public void registerAbsence(String cause, double absenceTime, Project project)
+			throws OperationNotAllowedException {
+		RegisterAbsence absence = new RegisterAbsence(cause, absenceTime);
+		if (absence.getCause().isEmpty() || absence.getAbsenceTime() == 0) {
+			throw new OperationNotAllowedException(
+					"Error: You must enter a cause for you absence",
+					"Please try again"
+
+			);
+		}
+		project.addAbsence(absence);
+
+	}
 
 	public void addEmployeeToActivity(Project project, Activity activity,
 			Employee employee, Cal cal) throws OperationNotAllowedException {
