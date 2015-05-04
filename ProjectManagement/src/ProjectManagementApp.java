@@ -15,7 +15,7 @@ public void createProject(String title) throws OperationNotRecommended {
 
 		if (project.getTitle().isEmpty()) {
 			throw new OperationNotRecommended(
-					"Warning, you are creating a project without a discription",
+					"Warning, you are creating a project without a description",
 					"Please enter a project name");
 		}
 		project.createTitle();
