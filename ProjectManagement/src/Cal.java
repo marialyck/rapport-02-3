@@ -1,7 +1,7 @@
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Cal {
 	public int startyear = Calendar.YEAR;
@@ -14,7 +14,7 @@ public class Cal {
 
 	String title;
 
-	Scanner scan;
+//	Scanner scan;
 	protected Calendar calendar = new GregorianCalendar();
 
 //	public void openScanner() {
