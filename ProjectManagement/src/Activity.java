@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class Activity {
 	protected int budgetTimeHours;
-	protected int budgetTimeWeeks
+	protected int budgetTimeWeeks;
 	Cal cal;
 	protected List<Employee> employees = new LinkedList<Employee>();
 	private String title;
