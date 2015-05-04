@@ -45,19 +45,40 @@ public class Cal {
 	public void setStartweek(int startweek) {
 		this.startweek = startweek;
 	}
-
-	public int getEndyear() {
+	public int getEndweek(){
+		int count = 0;
+		
+		if (startweek + Activity.budgetTimeWeeks < 52){
+			endweek = startweek + Activity.budgetTimeWeeks;
+		}
+		else if(startweek + Activity.budgetTimeWeeks > 52){
+			for(int i = startweek + Activity.budgetTimeWeeks; i >=52; i = i - 52) {
+				count = count + 1;
+				endweek = i;
+				
+				}
+			}
+		endyear = startyear + count;
+		return endweek;
+	}
+	
+	public int getEndyear(){
 		return endyear;
 	}
-
+	
+//	public int getEndyear() {
+//		return endyear;
+//	}
+//
 	public void setEndyear(int endyear) {
 		this.endyear = endyear;
 	}
-
-	public int getEndweek() {
-		return endweek;
-	}
-
+//
+//	public int getEndweek() {
+//		return endweek;
+//	}
+//
 	public void setEndweek(int endweek) {
 		this.endweek = endweek;
 	}
+}
