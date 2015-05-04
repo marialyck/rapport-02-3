@@ -7,14 +7,16 @@ import java.util.GregorianCalendar;
 import java.util.Date;
 
 public class Activity {
-	protected int budgetTime;
+	protected int budgetTimeHours;
+	protected int budgetTimeWeeks
 	Cal cal;
 	protected List<Employee> employees = new LinkedList<Employee>();
 	private String title;
 
-	public Activity(String title, int budgetTime) {
+	public Activity(String title, int budgetTimeHours, int budgetTimeWeeks) {
 		this.title = title;
-		this.budgetTime = budgetTime;
+		this.budgetTimeHours = budgetTimeHours;
+		this.budgetTimeWeeks = budgetTimeWeeks;
 
 	}
 
@@ -22,10 +24,13 @@ public class Activity {
 		return title;
 	}
 
-	public int getBudgetTime() {
-		return budgetTime;
+	public int getBudgetTimeHours() {
+		return budgetTimeHours;
 	}
-
+	
+	public int getBudgetTimeWeeks() {
+		return budgetTimeWeeks;
+	}
 	public void addEmployee(Employee employee) {
 		employees.add(employee);
 	}
