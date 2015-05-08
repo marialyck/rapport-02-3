@@ -12,7 +12,6 @@ public class Project {
 	public ProjectManagementApp proApp;
 	private Employee projectLeader;
 	private List<Activity> activities = new LinkedList<Activity>();
-	private List<RegisterAbsence> absence = new LinkedList<RegisterAbsence>();
 
 
 
@@ -54,15 +53,9 @@ public class Project {
 		// TODO Auto-generated method stub
 		return activities;
 	}
-	public List<RegisterAbsence> getAbsence() {
-		return absence;
 	
 	
-	}
 	
-	public void setAbsence(List<RegisterAbsence> absence) {
-		this.absence = absence;
-	}
 	
 
 
@@ -77,6 +70,7 @@ public class Project {
 		// TODO Auto-generated method stub
 		return projectLeader;
 	}
+
 
 
 
