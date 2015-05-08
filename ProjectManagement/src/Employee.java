@@ -1,13 +1,13 @@
-import java.util.ArrayList;
+package project023;
+
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+
 
 public class Employee {
-
 	protected String init;
-	private List<Activity> activities = new LinkedList<Activity>();
+//	private List<Activity> activities = new LinkedList<Activity>();
 	private ProjectManagementApp proApp;
+	
 	HashMap<Activity, Integer> map = new HashMap<Activity, Integer>();
 
 	public Employee(String init, ProjectManagementApp proApp) {
@@ -16,30 +16,31 @@ public class Employee {
 	}
 
 	public String getInit() {
-		return init;
+		return init; 
 	}
 
-	public void createActivity(String title, int budgetTimeHours, int budgetTimeWeeks, Project project,
-			Cal cal) throws OperationNotAllowedException {
+	public void createActivity(String title, int budgetTime, Project project
+		) throws OperationNotAllowedException {
 		if (!project.isProjectLeader(this)) {
 			throw new OperationNotAllowedException(
 					"You cannot create an activity if you're not a project leader",
 					"please request assistance from a project leader");
 		}
 
-		Activity activity = new Activity(title, budgetTimeHours, budgetTimeWeeks, cal);
+		Activity activity = new Activity(title, budgetTime);
 		if (activity.getTitle().isEmpty() || activity.getBudgetTime() == 0) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your activity and a valid time for the activity",
-					"Please redo your activity");
+					"Please redo your activity"); 
 		}
 
 		project.addActivity(activity);
 
 	}
-		public void registerAbsence(String cause, double absenceTime, Project project)
+
+	public void registerAbsence(String cause, double absenceTime, Absence absence)
 			throws OperationNotAllowedException {
-		RegisterAbsence absence = new RegisterAbsence(cause, absenceTime);
+		absence = new Absence(cause, absenceTime);
 		if (absence.getCause().isEmpty() || absence.getAbsenceTime() == 0) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a cause for you absence",
@@ -47,12 +48,12 @@ public class Employee {
 
 			);
 		}
-		project.addAbsence(absence);
+		absence.addAbsence(absence);
 
 	}
 
 	public void addEmployeeToActivity(Project project, Activity activity,
-			Employee employee, Cal cal) throws OperationNotAllowedException {
+			Employee employee) throws OperationNotAllowedException {
 		// TODO Auto-generated method stub
 		if (!project.isProjectLeader(this)) {
 
@@ -77,39 +78,12 @@ public class Employee {
 					"Please try to register your work hours again");
 		}
 		map.put(activity, workHours);
+	
 	}
 
 	public int getWorkHours(Activity activity) {
 		// TODO Auto-generated method stub
-		return map.get(activity);
+		return map.get(activity); 
 	}
 
-	public void followUp(Employee employee, Project project, Activity activity)
-			throws OperationNotAllowedException {
-		if (!project.isProjectLeader(this)) {
-
-			throw new OperationNotAllowedException(
-					"you cannot follow-up on employees unless you're a project leader",
-					"please request assistance from a project leader");
-
-		}
-		System.out.print("Employee: " + employee
-				+ " has been working on project " + project.getTitle()
-				+ " on the following activity " + activity
-				+ " for the following hours: "
-				+ employee.getWorkHours(activity));
-	}
-
-	public void getReport(Project project, Activity activity)
-			throws OperationNotAllowedException {
-		if (!project.isProjectLeader(this)) {
-
-			throw new OperationNotAllowedException(
-					"you cannot get a report unless you're a project leader",
-					"please request assistance from a project leader"); 
-
-		}
-		System.out.println("report on project: " + project.getTitle() + ", "
-				+ project.getActivities() + ", " + activity.getEmployees());
-	}
 }
