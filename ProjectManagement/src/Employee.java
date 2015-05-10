@@ -8,7 +8,7 @@ public class Employee {
 	protected String init;
 	private List<Activity> activities = new LinkedList<Activity>();
 	private ProjectManagementApp proApp;
-	HashMap<Activity, Integer> map = new HashMap<Activity, Integer>();
+	HashMap<Activity, Integer> mapWorkHours = new HashMap<Activity, Integer>();
 
 	public Employee(String init, ProjectManagementApp proApp) {
 		this.init = init;
@@ -26,7 +26,17 @@ public class Employee {
 					"You cannot create an activity if you're not a project leader",
 					"please request assistance from a project leader");
 		}
-
+		if (startYear > endYear) {
+			throw new OperationNotAllowedException(
+					"You cannot create a project with a date that has been surpassed",
+					"please redo the end date");
+		}
+		if(startYear == endYear){
+		if (startWeek > endWeek) {
+			throw new OperationNotAllowedException(
+					"You cannot create a project with a date that has been surpassed",
+					"please redo the end date");
+		}}
 		Activity activity = new Activity(title, budgetTime, startYear, startWeek, endYear, endWeek);
 		if (activity.getTitle().isEmpty() || activity.getBudgetTime() == 0) {
 			throw new OperationNotAllowedException(
@@ -39,7 +49,7 @@ public class Employee {
 	}
 
 	public void addEmployeeToActivity(Project project, Activity activity,
-			Employee employee, Cal cal) throws OperationNotAllowedException {
+			Employee employee) throws OperationNotAllowedException {
 	
 		if (!project.isProjectLeader(this)) {
 
@@ -63,12 +73,12 @@ public class Employee {
 					"Cannot register a negative amount of hours",
 					"Please try to register your work hours again");
 		}
-		map.put(activity, workHours);
+		mapWorkHours.put(activity, workHours);
 	}
 
 	public int getWorkHours(Activity activity) {
 	
-		return map.get(activity);
+		return mapWorkHours.get(activity);
 	}
 
 	public void followUp(Employee employee, Project project, Activity activity)
@@ -99,4 +109,8 @@ public class Employee {
 		System.out.println("report on project: " + project.getTitle() + ", "
 				+ project.getActivities() + ", " + activity.getEmployees()); 
 	}
+	public void registerAbsence(Employee employee, Absence absence){
+//		Absence absence = new Absence(absenceTime,startYear,startWeek,endYear,endWeek);
+		absence.addEmployee(employee);
+	} 
 }
