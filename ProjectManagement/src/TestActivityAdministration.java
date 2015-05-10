@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,7 +13,7 @@ public class TestActivityAdministration {
 		Employee emp1 = new Employee("CHAR", proApp);
 		Employee emp2 = new Employee("BARS", proApp);
 		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
-		Cal cal = new Cal();
+//		Cal cal = new Cal();
 		pro1.setProjectLeader(emp1);
 		// check initial state.
 		// a) The project has no activities
@@ -43,7 +44,8 @@ public class TestActivityAdministration {
 	public void testCreateActivity() throws Exception {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp = new Employee("CHAR", proApp);
-		Cal cal = new Cal();
+	
+//		Cal cal = new Cal();
 		Project pro1 = new Project("Hehj",2015, 1, 2017, 1);
 		proApp.createProject("yolo",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp);
@@ -70,7 +72,7 @@ public class TestActivityAdministration {
 	public void testAddActivity() throws Exception {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp1 = new Employee("CHAR", proApp);
-		Cal cal = new Cal();
+//		Cal cal = new Cal();
 
 		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		List<Activity> activities = pro1.getActivities();
@@ -93,7 +95,7 @@ public class TestActivityAdministration {
 		Employee emp2 = new Employee("Sn00p d0gz", proApp);
 		proApp.addEmployee(emp1);
 		proApp.addEmployee(emp2);
-		Cal cal = new Cal();
+//		Cal cal = new Cal();
 		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp1);
 		assertEquals(emp1, pro1.getProjectLeader());
@@ -102,7 +104,7 @@ public class TestActivityAdministration {
 		Activity act1 = new Activity("masdml", 10, 2015, 2, 2016,2);
 		List<Employee> employees = act1.getEmployees();
 		assertTrue(employees.isEmpty());
-		emp1.addEmployeeToActivity(pro1, act1, emp2, cal);
+		emp1.addEmployeeToActivity(pro1, act1, emp2);
 		assertFalse(employees.isEmpty());
 		assertEquals(1, employees.size());
 
