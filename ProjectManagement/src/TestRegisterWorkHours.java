@@ -8,7 +8,7 @@ public class TestRegisterWorkHours {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
-		Activity act1 = new Activity("Smokémon",1000,cal);
+		Activity act1 = new Activity("Smokémon",1000,2015,2,2016,2);
 		emp.registerWorkHours(act1, 420);
 		assertEquals(emp.getWorkHours(act1), 420);
 	}
@@ -18,7 +18,7 @@ public class TestRegisterWorkHours {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
-		Activity act1 = new Activity("Smokémon",1000,cal);
+		Activity act1 = new Activity("Smokémon",1000,2015,2,2016,2);
 
 		try {
 			emp.registerWorkHours(act1, -420);
