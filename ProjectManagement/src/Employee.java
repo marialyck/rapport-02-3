@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Employee {
 
-	protected String init;
+	private String init;
 	private List<Activity> activities = new LinkedList<Activity>();
 	private ProjectManagementApp proApp;
-	HashMap<Activity, Integer> mapWorkHours = new HashMap<Activity, Integer>();
+	private HashMap<Activity, Integer> mapWorkHours = new HashMap<Activity, Integer>();
 
 	public Employee(String init, ProjectManagementApp proApp) {
 		this.init = init;
@@ -62,8 +62,10 @@ public class Employee {
 					"The requested employee is non-existent",
 					"please request a valid employee");
 		}
+		
 		activity.addEmployee(employee);
-
+		employee.activities.add(activity);
+		employee.mapWorkHours.put(activity, 0);
 	}
 
 	public void registerWorkHours(Activity activity, int workHours)
@@ -73,7 +75,7 @@ public class Employee {
 					"Cannot register a negative amount of hours",
 					"Please try to register your work hours again");
 		}
-		mapWorkHours.put(activity, workHours);
+		mapWorkHours.put(activity, mapWorkHours.get(activity)+workHours);
 	}
 
 	public int getWorkHours(Activity activity) {
@@ -93,8 +95,8 @@ public class Employee {
 		System.out.print("Employee: " + employee
 				+ " has been working on project " + project.getTitle()
 				+ " on the following activity " + activity
-				+ " for the following hours: "
-				+ employee.getWorkHours(activity));
+				+ " for the following hours: " 
+				+ employee.getWorkHours(activity)); 
 	}
 
 	public void getReport(Project project, Activity activity)
