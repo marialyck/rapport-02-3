@@ -7,8 +7,13 @@ public class TestRegisterWorkHours {
 	public void testRegisterWorkHours() throws Exception {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp = new Employee("CHAR", proApp);
+		proApp.addEmployee(emp);
+		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+		proApp.addProject(pro1);
+		pro1.setProjectLeader(emp);
 		Cal cal = new Cal();
 		Activity act1 = new Activity("Smokémon",1000,2015,2,2016,2);
+		emp.addEmployeeToActivity(pro1, act1, emp);
 		emp.registerWorkHours(act1, 420);
 		assertEquals(emp.getWorkHours(act1), 420);
 	}
