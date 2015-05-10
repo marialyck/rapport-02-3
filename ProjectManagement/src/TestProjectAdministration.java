@@ -47,14 +47,27 @@ public void testFollowUp() throws Exception{
 ProjectManagementApp proApp = new ProjectManagementApp();
 Employee emp1 = new Employee("CHAR", proApp);
 Employee emp2 = new Employee("BARS", proApp);
-Project pro1 = new Project("SwagForLife", 2015, 1, 2017, 1);
-Cal cal = new Cal();
-Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
-pro1.setProjectLeader(emp1);
-// step 1) an employee tries to add a crew to a project but the employee
-// is not a project leader
+
+proApp.addEmployee(emp1);
+proApp.addEmployee(emp2);
 
 proApp.createProject("yolo", 2015, 1, 2017, 1);
+
+Project pro1 = proApp.getProjects().get(0);
+
+pro1.setProjectLeader(emp1);
+Cal cal = new Cal();
+Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
+
+// step 1) an employee tries to add a crew to a project but the employee
+// is not a project leader
+pro1.addActivity(act1);
+
+emp1.addEmployeeToActivity(pro1, act1, emp2);
+
+System.out.println(act1.getEmployees().size());
+emp2.registerWorkHours(act1, 20);
+emp1.followUp(emp2, pro1, act1);
 assertFalse(pro1.isProjectLeader(emp2));
 try {
 	emp2.followUp(emp1, pro1, act1);
@@ -85,6 +98,7 @@ pro1.setProjectLeader(emp1);
 // is not a project leader
 
 proApp.createProject("yolo",2015, 1, 2017, 1);
+emp1.getReport(pro1, act1);
 assertFalse(pro1.isProjectLeader(emp2));
 try {
 	emp2.getReport(pro1, act1);
