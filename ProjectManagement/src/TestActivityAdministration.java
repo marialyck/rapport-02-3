@@ -11,19 +11,19 @@ public class TestActivityAdministration {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp1 = new Employee("CHAR", proApp);
 		Employee emp2 = new Employee("BARS", proApp);
-		Project pro1 = new Project("SwagForLife");
+		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		Cal cal = new Cal();
 		pro1.setProjectLeader(emp1);
 		// check initial state.
 		// a) The project has no activities
 
-		proApp.createProject("yolo");
+		proApp.createProject("yolo",2015, 1, 2017, 1);
 		assertTrue(pro1.getActivities().isEmpty());
 		// step 1) make sure the employee is not a project leader
 		assertFalse(pro1.isProjectLeader(emp2));
 
 		try {
-			emp2.createActivity("a1", 2, pro1, cal);
+			emp2.createActivity("a1", 2, pro1, 2015, 2, 2016,2);
 			// Make sure that the activity creation fails.
 			fail("OperationNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
@@ -44,15 +44,15 @@ public class TestActivityAdministration {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
-		Project pro1 = new Project("Hehj");
-		proApp.createProject("yolo");
+		Project pro1 = new Project("Hehj",2015, 1, 2017, 1);
+		proApp.createProject("yolo",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp);
 		assertEquals(emp, pro1.getProjectLeader());
 
 		try {
 
 			// step 1) make an activity - make sure it fails
-			emp.createActivity("", 0, pro1, cal);
+			emp.createActivity("", 0, pro1, 2015, 2, 2016,2);
 			fail("OperaionNotAllowedException exception should have been thrown");
 		} catch (OperationNotAllowedException e) {
 			// Step 2) Throw error message
@@ -72,7 +72,7 @@ public class TestActivityAdministration {
 		Employee emp1 = new Employee("CHAR", proApp);
 		Cal cal = new Cal();
 
-		Project pro1 = new Project("SwagForLife");
+		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		List<Activity> activities = pro1.getActivities();
 		assertTrue(activities.isEmpty());
 		pro1.setProjectLeader(emp1);
@@ -80,7 +80,7 @@ public class TestActivityAdministration {
 
 		String title = "Smoke w33d err'day";
 		int budgetTime = 10;
-		emp1.createActivity(title, budgetTime, pro1, cal);
+		emp1.createActivity(title, budgetTime, pro1, 2015, 2, 2016,2);
 
 		assertEquals(1, activities.size());
 
@@ -94,12 +94,12 @@ public class TestActivityAdministration {
 		proApp.addEmployee(emp1);
 		proApp.addEmployee(emp2);
 		Cal cal = new Cal();
-		Project pro1 = new Project("SwagForLife");
+		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp1);
 		assertEquals(emp1, pro1.getProjectLeader());
 		
 		
-		Activity act1 = new Activity("masdml", 10, cal);
+		Activity act1 = new Activity("masdml", 10, 2015, 2, 2016,2);
 		List<Employee> employees = act1.getEmployees();
 		assertTrue(employees.isEmpty());
 		emp1.addEmployeeToActivity(pro1, act1, emp2, cal);
