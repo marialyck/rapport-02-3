@@ -14,9 +14,9 @@ public class Activity extends Cal {
 	public Activity(String title, double budgetTime, int startYear, int startWeek, int endYear, int endWeek) { 
 		this.title = title;
 		this.budgetTime = budgetTime;
-		calEnd.setDate(startYear, startWeek);
-		calStart.setDate(endYear, endWeek);
-	}
+		calStart.setDate(startYear, startWeek);
+		calEnd.setDate(endYear, endWeek);
+	} 
 
 	public String getTitle() {
 		return title;
