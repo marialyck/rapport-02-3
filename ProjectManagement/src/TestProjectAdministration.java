@@ -15,7 +15,7 @@ public class TestProjectAdministration {
 public void testProjectName() throws Exception {
 	ProjectManagementApp proApp = new ProjectManagementApp();
 	Employee emp = new Employee("CHAR", proApp);
-	Project pro1 = new Project("");
+	Project pro1 = new Project("", 2015, 1, 2017, 1);
 	assertTrue(pro1.getTitle().isEmpty());
 	
 	
@@ -23,7 +23,7 @@ public void testProjectName() throws Exception {
 	// make sure that the project fails 
 	
 	try {
-		proApp.createProject("");
+		proApp.createProject("", 2015, 1, 2017, 1);
 		fail("OperaionNotAllowedException exception should have been thrown");
 	} catch (OperationNotAllowedException e) {
 		// Step 2) Throw error message
@@ -38,9 +38,68 @@ public void testAddProject() throws Exception{
 	ProjectManagementApp proApp = new ProjectManagementApp();
 	List<Project> projects = proApp.getProjects();
 	assertTrue(projects.isEmpty());
-	proApp.createProject("123");
+	proApp.createProject("123", 2015, 1, 2017, 1);
 	assertEquals(1, projects.size());
 
 }
-	
+@Test
+public void testFollowUp() throws Exception{
+ProjectManagementApp proApp = new ProjectManagementApp();
+Employee emp1 = new Employee("CHAR", proApp);
+Employee emp2 = new Employee("BARS", proApp);
+Project pro1 = new Project("SwagForLife", 2015, 1, 2017, 1);
+Cal cal = new Cal();
+Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
+pro1.setProjectLeader(emp1);
+// step 1) an employee tries to add a crew to a project but the employee
+// is not a project leader
+
+proApp.createProject("yolo", 2015, 1, 2017, 1);
+assertFalse(pro1.isProjectLeader(emp2));
+try {
+	emp2.followUp(emp1, pro1, act1);
+	// Make sure that the activity creation fails.
+	fail("OperationNotAllowedException exception should have been thrown");
+} catch (OperationNotAllowedException e) {
+	// Step 2)
+	// Check that the exception thrown has the correct error message and
+	// knows which operation failed.
+
+	assertEquals(
+			"you cannot follow-up on employees unless you're a project leader",
+			e.getMessage());
+	assertEquals("please request assistance from a project leader",
+			e.getOperation());
+}
+}	
+@Test
+public void testGetReport() throws Exception{
+ProjectManagementApp proApp = new ProjectManagementApp();
+Employee emp1 = new Employee("CHAR", proApp);
+Employee emp2 = new Employee("BARS", proApp);
+Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+Cal cal = new Cal();
+Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
+pro1.setProjectLeader(emp1);
+// step 1) an employee tries to add a crew to a project but the employee
+// is not a project leader
+
+proApp.createProject("yolo",2015, 1, 2017, 1);
+assertFalse(pro1.isProjectLeader(emp2));
+try {
+	emp2.getReport(pro1, act1);
+	// Make sure that the activity creation fails.
+	fail("OperationNotAllowedException exception should have been thrown");
+} catch (OperationNotAllowedException e) {
+	// Step 2)
+	// Check that the exception thrown has the correct error message and
+	// knows which operation failed.
+
+	assertEquals(
+			"you cannot get a report unless you're a project leader",
+			e.getMessage());
+	assertEquals("please request assistance from a project leader",
+			e.getOperation());
+}
+}	
 }
