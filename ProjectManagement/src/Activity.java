@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Date;
 
 public class Activity extends Cal {
-	protected int budgetTime;
+	protected double budgetTime;
 	protected Cal cal;
 	protected List<Employee> employees = new LinkedList<Employee>();
 	public List<Integer> workHours = new LinkedList<Integer>();
@@ -11,7 +11,7 @@ public class Activity extends Cal {
 	Cal calEnd = new Cal();
 	
 
-	public Activity(String title, int budgetTime, int startYear, int startWeek, int endYear, int endWeek) { 
+	public Activity(String title, double budgetTime, int startYear, int startWeek, int endYear, int endWeek) { 
 		this.title = title;
 		this.budgetTime = budgetTime;
 		calEnd.setDate(startYear, startWeek);
@@ -22,7 +22,7 @@ public class Activity extends Cal {
 		return title;
 	}
 
-	public int getBudgetTime() {
+	public double getBudgetTime() {
 		return budgetTime;
 	}
 
