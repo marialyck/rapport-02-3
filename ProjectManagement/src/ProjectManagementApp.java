@@ -1,5 +1,3 @@
-package project023;
-
 import java.util.List;
 import java.util.LinkedList;
 
@@ -12,23 +10,20 @@ public class ProjectManagementApp {
 		projects.add(project);
 	}
 
-	public void createProject(String title) throws OperationNotRecommended {
-		Project project = new Project(title);
+	public void createProject(String title, int startYear, int startWeek, int endYear, int endWeek) throws OperationNotAllowedException {
+		Project project = new Project(title, startYear, startWeek, endYear, endWeek);
 
 		if (project.getTitle().isEmpty()) {
-			throw new OperationNotRecommended(
-					"Warning, you are creating a project without a description",
-					"Please enter a project name");
+			throw new OperationNotAllowedException(
+					"Error: You must enter a valid name for your project",
+					"Please rename your project");
 		}
-		 project.createTitle();
 		//
 		// project.setProjectLeader(projectLeader);
 		addProject(project);
 
-	} 
+	}
 
-	
-	
 	public boolean search(String init) {
 		for (Employee employee : employees) {
 			if (employee.getInit().contains(init)) {
