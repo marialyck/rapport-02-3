@@ -1,25 +1,21 @@
-package project023;
-
-import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Project {
-	
-	protected String projectname;
+
 	protected String title;
 	protected String init;
 	public ProjectManagementApp proApp;
 	private Employee projectLeader;
 	private List<Activity> activities = new LinkedList<Activity>();
-
-
-
-	int numberOfProjects=0;
+	private Activity activity;
 	
-
-	public Project(String title) {
+	Cal calStart = new Cal();
+	Cal calEnd = new Cal();
+	public Project(String title, int startYear, int startWeek, int endYear, int endWeek) {
 		this.title = title;
+		calEnd.setDate(startYear, startWeek);
+		calStart.setDate(endYear, endWeek);
 	}
 
 	
@@ -28,18 +24,11 @@ public class Project {
 		return title;
 	}
 
-	public void createTitle(){
-	for(int i=0;i<proApp.getProjects().size();i++){
-		numberOfProjects=numberOfProjects+1;
-	}	
-			title.equals(Calendar.YEAR+""+numberOfProjects+1);
-		}
-	
 
 
 	public void setProjectLeader(Employee projectLeader) {
 		// TODO Auto-generated method stub
-		this.projectLeader = projectLeader;
+		this.projectLeader = projectLeader; 
 	}
 	
 	public void addActivity(Activity activity) {
@@ -54,9 +43,9 @@ public class Project {
 		return activities;
 	}
 	
-	
-	
-	
+	public void getEmps(){
+		
+	}
 
 
 	public boolean isProjectLeader(Employee employee) {
@@ -70,8 +59,6 @@ public class Project {
 		// TODO Auto-generated method stub
 		return projectLeader;
 	}
-
-
 
 
 }
