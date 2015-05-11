@@ -52,18 +52,6 @@ public class Project {
 		// TODO Auto-generated method stub
 		return projectLeader.equals(employee);
 	}
-	
-	public void eraseactivity(List<Activity> activities) {
-
-		for (Activity activity : activities) {
-			if (activity.getTitle().equals(scanner.nextLine())) {
-				Project.activities.remove(activity);
-			}
-		}
- 
-	}
-
-
 
 	public Employee getProjectLeader() {
 		// TODO Auto-generated method stub
