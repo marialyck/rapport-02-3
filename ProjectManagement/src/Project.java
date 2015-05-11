@@ -15,8 +15,9 @@ public class Project {
 	public Project(String title, int startYear, int startWeek, int endYear,
 			int endWeek) {
 		this.title = title;
-		calEnd.setDate(startYear, startWeek);
-		calStart.setDate(endYear, endWeek);
+		calStart.setDate(startYear, startWeek);
+		calEnd.setDate(endYear, endWeek);
+		System.out.println("Project " + title + " created!");
 	}
 
 	public String getTitle() {
