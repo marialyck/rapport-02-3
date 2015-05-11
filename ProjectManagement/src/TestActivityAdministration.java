@@ -9,7 +9,7 @@ public class TestActivityAdministration {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp1 = new Employee("CHAR", proApp);
 		Employee emp2 = new Employee("BARS", proApp);
-		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+		Project pro1 = new Project("GatherLeaves",2015, 1, 2017, 1);
 //		Cal cal = new Cal();
 		pro1.setProjectLeader(emp1);
 		// check initial state.
@@ -43,8 +43,8 @@ public class TestActivityAdministration {
 		Employee emp = new Employee("CHAR", proApp);
 	
 //		Cal cal = new Cal();
-		Project pro1 = new Project("Hehj",2015, 1, 2017, 1);
-		proApp.createProject("yolo",2015, 1, 2017, 1);
+		Project pro1 = new Project("WriteCode",2015, 1, 2017, 1);
+		proApp.createProject("InsertNameHere",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp);
 		assertEquals(emp, pro1.getProjectLeader());
 
@@ -71,13 +71,13 @@ public class TestActivityAdministration {
 		Employee emp1 = new Employee("CHAR", proApp);
 //		Cal cal = new Cal();
 
-		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+		Project pro1 = new Project("FeedBirds",2015, 1, 2017, 1);
 		List<Activity> activities = pro1.getActivities();
 		assertTrue(activities.isEmpty());
 		pro1.setProjectLeader(emp1);
 		assertEquals(emp1, pro1.getProjectLeader());
 
-		String title = "Smoke w33d err'day";
+		String title = "What is Love";
 		int budgetTime = 10;
 		emp1.createActivity(title, budgetTime, pro1, 2015, 2, 2016,2);
 
@@ -89,15 +89,15 @@ public class TestActivityAdministration {
 	public void testAddEmployeeToActivity() throws Exception {
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		Employee emp1 = new Employee("CHAR", proApp);
-		Employee emp2 = new Employee("Sn00p d0gz", proApp);
+		Employee emp2 = new Employee("Christine", proApp);
 		proApp.addEmployee(emp1);
 		proApp.addEmployee(emp2);
-		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+		Project pro1 = new Project("NeverGonnaGiveYouUp",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp1);
 		assertEquals(emp1, pro1.getProjectLeader());
 		
 		
-		Activity act1 = new Activity("masdml", 10, 2015, 2, 2016,2);
+		Activity act1 = new Activity("NeverGonnaLetYouDown", 10, 2015, 2, 2016,2);
 		List<Employee> employees = act1.getEmployees();
 		assertTrue(employees.isEmpty());
 		emp1.addEmployeeToActivity(pro1, act1, emp2);
