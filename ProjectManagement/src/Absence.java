@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Absence {
 	protected List<Employee> employees = new LinkedList<Employee>();
-	private List<Absence> absences = new LinkedList<Absence>(); 
 	protected double absenceTime;
 	Cal calStart = new Cal();
 	Cal calEnd = new Cal();
@@ -15,9 +14,6 @@ public class Absence {
 		calEnd.setDate(endYear, endWeek); 
 	}
 
-	public double getAbsenceTime() {
-		return absenceTime;
-	}
 
 	public void addEmployee(Employee employee) {
 		employees.add(employee);
@@ -26,9 +22,15 @@ public class Absence {
 	public List<Employee> getEmployees() {
 		return employees;
 	}
-
-	public void addAbsence(Absence absence) {
-		absences.add(absence);
+	public void eraseAbsence(List<Employee> employees,String init) {
+		for (Employee employee : employees) {
+			if (employee.getInit().equals(init)) {
+				employees.remove(employee);
+			}
+		}
+		
+		
+ 
 	}
 
 }
