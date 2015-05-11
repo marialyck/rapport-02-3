@@ -8,7 +8,7 @@ public class TestAbsence {
 public void testRegisterAbsence(){
 	ProjectManagementApp proApp = new ProjectManagementApp();
 	Absence absence = new Absence(10, 2015, 1, 2016, 1);
-	Employee emp = new Employee("stupid-ass chinaman", proApp);
+	Employee emp = new Employee("Jonas", proApp);
 	emp.registerAbsence(emp, absence);
 	assertEquals(absence.getEmployees().size(),1);
 }
