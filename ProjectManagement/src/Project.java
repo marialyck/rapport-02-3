@@ -42,11 +42,6 @@ public class Project {
 		// TODO Auto-generated method stub
 		return activities;
 	}
-	
-	public void getEmps(){
-		
-	}
-
 
 	public boolean isProjectLeader(Employee employee) {
 		// TODO Auto-generated method stub
