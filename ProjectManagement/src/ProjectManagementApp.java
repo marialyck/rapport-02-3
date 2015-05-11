@@ -10,16 +10,27 @@ public class ProjectManagementApp {
 		projects.add(project);
 	}
 
-	public void createProject(String title, int startYear, int startWeek, int endYear, int endWeek) throws OperationNotAllowedException {
-		Project project = new Project(title, startYear, startWeek, endYear, endWeek);
+	public void createProject(String title, int startYear, int startWeek,
+			int endYear, int endWeek) throws OperationNotAllowedException {
+		if (startYear > endYear) {
+			throw new OperationNotAllowedException(
+					"You cannot create a project with a date that has been surpassed",
+					"please redo the end date");
+		}
+		if(startYear <= endYear){
+		if (startWeek > endWeek) {
+			throw new OperationNotAllowedException(
+					"You cannot create a project with a date that has been surpassed",
+					"please redo the end date");
+		}}
+		Project project = new Project(title, startYear, startWeek, endYear,
+				endWeek);
 
 		if (project.getTitle().isEmpty()) {
 			throw new OperationNotAllowedException(
 					"Error: You must enter a valid name for your project",
 					"Please rename your project");
 		}
-		//
-		// project.setProjectLeader(projectLeader);
 		addProject(project);
 
 	}
