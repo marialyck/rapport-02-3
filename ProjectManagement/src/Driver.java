@@ -100,8 +100,15 @@ public class Driver {
 					getChoices(initials, proApp, employee);
 					
 				case 3:
-					System.out.println("Please enter name of employee");
-					Employee employee = 
+					System.out.println("Please enter initials of employee");
+					String initOfEmployee = scanner.next();
+					Employee absentEmployee = null;
+					for (Employee absent : proApp.getEmployees()){
+						if (absent.getInit().equals(initOfEmployee)){
+							absentEmployee = absent;
+							break;
+						}
+					}
 					System.out.println("Please enter absence time");
 					double absenceTime = scanner.nextDouble();
 					System.out.println("Please enter start year");
@@ -113,6 +120,13 @@ public class Driver {
 					System.out.println("Please enter end week");
 					int endWeek3 = scanner.nextInt();
 					
+					Absence absence = new Absence(absenceTime, startYear3, startWeek3, endYear3, endWeek3);
+					employee.registerAbsence(absentEmployee, absence);
+					
+					mainMenu();
+					getChoices(initials, proApp, employee);
+					
+					break;
 					
 				case 4: 
 				case 5:
@@ -136,9 +150,5 @@ public class Driver {
 		
 		
 	}
-
-
-//			proApp.createProject(project.getTitle(), cal.getStartyear(), cal.getStartweek(), cal.getEndyear(), cal.getEndweek());
-//	Project project = new Project(project.getTitle(), cal.getStartyear(), cal.getStartweek(), cal.getEndyear(), cal.getEndweek());
 	
 }
