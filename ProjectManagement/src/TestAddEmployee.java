@@ -1,4 +1,4 @@
-	import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 	
 	import org.junit.Test;
 	
@@ -8,14 +8,14 @@
 			ProjectManagementApp proApp = new ProjectManagementApp();
 			Employee emp1 = new Employee("CHAR", proApp);
 			Employee emp2 = new Employee("BARS", proApp);
-			Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+			Project pro1 = new Project("NeverGonnaRunAround",2015, 1, 2017, 1);
 			Cal cal = new Cal();
 			Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
 			pro1.setProjectLeader(emp1);
 			// step 1) an employee tries to add a crew to a project but the employee
 			// is not a project leader
 			
-			proApp.createProject("yolo ",2015, 1, 2017, 1);
+			proApp.createProject("AndHurtYou ",2015, 1, 2017, 1);
 			assertFalse(pro1.isProjectLeader(emp2));
 			try {
 				emp2.addEmployeeToActivity(pro1, act1, emp1);
@@ -37,16 +37,16 @@
 		@Test
 		public void testNonExistentEmployee() throws OperationNotAllowedException {
 			ProjectManagementApp proApp = new ProjectManagementApp();
-			Employee emp1 = new Employee("CHAR", proApp);
-			Employee emp2 = new Employee("FAIL", proApp);
-			Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
+			Employee emp1 = new Employee("Dmitri", proApp);
+			Employee emp2 = new Employee("Vladimir", proApp);
+			Project pro1 = new Project("CleanGrounds",2015, 1, 2017, 1);
 			Cal cal = new Cal();
-			Activity act1 = new Activity("yolo1", 420, 2015, 2, 2016,2);
+			Activity act1 = new Activity("FishingForFish", 420, 2015, 2, 2016,2);
 			pro1.setProjectLeader(emp1);
 			// step 1) an employee tries to add a crew to a project but the employee
 			// is not a project leader
 			
-			proApp.createProject("yolo",2015, 1, 2017, 1);
+			proApp.createProject("MakeDinner",2015, 1, 2017, 1);
 			try {
 				emp1.addEmployeeToActivity(pro1, act1, emp2);
 				// Make sure that the activity creation fails.
