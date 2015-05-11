@@ -1,4 +1,4 @@
-package project023;
+
 
 import java.util.List;
 import java.util.LinkedList;
@@ -52,6 +52,10 @@ public class ProjectManagementApp {
 
 	public List<Project> getProjects() {
 		return projects;
+	}
+	
+	public List<Employee> getEmployees(){
+		return employees;
 	}
 
 }
