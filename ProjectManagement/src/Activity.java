@@ -1,6 +1,5 @@
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Date;
 
 public class Activity extends Cal {
 	protected double budgetTime;
