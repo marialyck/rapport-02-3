@@ -1,8 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
 import org.junit.Test;
 
 public class TestCalendar {
@@ -23,7 +20,6 @@ public class TestCalendar {
 	}
 	@Test
 	public void testCreateProjectNegativeyear()throws Exception{
-		Cal cal = new Cal();
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		try {
 			
@@ -44,7 +40,6 @@ public class TestCalendar {
 	}
 	@Test
 	public void testCreateProjectNegativeWeek()throws Exception{
-		Cal cal = new Cal();
 		ProjectManagementApp proApp = new ProjectManagementApp();
 		try {
 			
