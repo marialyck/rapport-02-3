@@ -1,7 +1,4 @@
 import static org.junit.Assert.*;
-
-import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
@@ -95,7 +92,6 @@ public class TestActivityAdministration {
 		Employee emp2 = new Employee("Sn00p d0gz", proApp);
 		proApp.addEmployee(emp1);
 		proApp.addEmployee(emp2);
-//		Cal cal = new Cal();
 		Project pro1 = new Project("SwagForLife",2015, 1, 2017, 1);
 		pro1.setProjectLeader(emp1);
 		assertEquals(emp1, pro1.getProjectLeader());
@@ -108,5 +104,16 @@ public class TestActivityAdministration {
 		assertFalse(employees.isEmpty());
 		assertEquals(1, employees.size());
 
+	}
+	@Test
+	public void testRemoveActivity() throws Exception{
+		ProjectManagementApp proApp = new ProjectManagementApp();
+		Employee emp = new Employee("Char",proApp);
+		Project pro1 = new Project("pro1", 2015, 2, 2016, 2);
+		pro1.setProjectLeader(emp);
+		emp.createActivity("1", 400, pro1, 2015, 2, 2016, 2);
+		emp.createActivity("2", 400, pro1, 2015, 2, 2016, 2);
+		emp.eraseActivity(pro1.getActivities(),"1");
+		assertEquals(1,pro1.getActivities().size());
 	}
 }
